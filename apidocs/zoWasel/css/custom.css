@@ -1,0 +1,25 @@
+:root{
+    --primary: #05B050;
+    --secondary: #FB8A2E;
+    --primary-hover: #009440;
+}
+/* --------------------------------- Button --------------------------------- */
+.btn-primary-2{
+    background-color: white;
+    border: 1px solid var(--primary);
+}
+.btn-primary-2:hover{
+    background-color: white;
+    border: 1px solid var(--primary);
+}
+/* --------------------------------- SIDEBAR -------------------------------- */
+.sidebar-active{
+    background-color: var(--primary);
+}
+.sidebar-active span{
+    color: white;
+}
+/* ----------------------------- Cursor pointer ----------------------------- */
+.cursor{
+    cursor: pointer;
+}

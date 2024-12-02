@@ -1,0 +1,982 @@
+﻿<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ZWL API Documentation</title>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <link href="css?family=Heebo:300,400" rel="stylesheet" />
+    <link rel="stylesheet" href="css%20%281%29/main.css" />
+    <script src="js/uikit.js"></script>
+  </head>
+
+  <body>
+    <div
+      data-uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent; top: 200">
+      <nav class="uk-navbar-container">
+        <div class="uk-container">
+          <div data-uk-navbar="">
+            <div class="uk-navbar-left">
+              <a class="uk-navbar-item uk-logo uk-visible@m" href="#"
+                >ZOWASEL API</a
+              >
+              <a
+                class="uk-navbar-toggle uk-hidden@m"
+                href="#offcanvas-docs"
+                data-uk-toggle=""
+                ><span data-uk-navbar-toggle-icon=""></span>
+                <span class="uk-margin-small-left">ZOWASEL API</span></a
+              >
+              
+            </div>
+            <div class="uk-navbar-center uk-hidden@m">
+              <a class="uk-navbar-item uk-logo" href="#">Docs</a>
+            </div>
+           
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="uk-section">
+      <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid="">
+          <!-- Sidebar -->
+          <div class="sidebar-fixed-width uk-visible@m">
+            <div class="sidebar-docs uk-position-fixed uk-margin-top">
+              <h5>Get Started</h5>
+              <ul class="uk-nav uk-nav-default doc-nav">
+                <li class="uk-active">
+                  <a href="#apidoc">ZWL API Documentation</a>
+                </li>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#baseurl">Base URL</a></li>
+                <li><a href="#auth">Authentication</a></li>
+                <li><a href="#header">Header</a></li>
+                <li><a href="#endpoints">Endpoints</a></li>
+              </ul>
+              <h5>User Management</h5>
+              <ol class="uk-nav-default spa doc-nav">
+                <li><a href="#createuser">Create User</a></li>
+                <li><a href="#userdetail">Get User Details</a></li>
+                <li><a href="#updateuser">Update User</a></li>
+                <li><a href="#deleteuser">Delete User</a></li>
+              </ol>
+              <h5>Crop Marketplace</h5>
+              <ol class="spa uk-nav-default doc-nav">
+                <li><a href="#createcrop">Create Crop Listing</a></li>
+                <li><a href="#getcrop">Get Crop Listing</a></li>
+                <li><a href="#updatecrop">Update Crop Listing</a></li>
+                <li><a href="#deletecrop">Delete Crop Listing</a></li>
+              </ol>
+              <h5>Market Price Reports</h5>
+              <ol class="spa uk-nav-default doc-nav">
+                <li><a href="#createmarket">Create Market Price Report</a></li>
+                <li><a href="#getmarket">Get Market Price Report</a></li>
+                <li><a href="#updatemarket">Update Market Price Report</a></li>
+                <li><a href="#deletemarket">Delete Market Price Report</a></li>
+              </ol>
+              <h5>Farmer Data</h5>
+              <ol class="spa uk-nav-default doc-nav">
+                <li><a href="#createfarmer">Create Farmer</a></li>
+                <li><a href="#getfarmer">Get Farmer</a></li>
+                <li><a href="#updatefarmer">Update Farmer</a></li>
+                <li><a href="#deletefarmer">Delete Farmer</a></li>
+              </ol>
+              
+            </div>
+          </div>
+          <!-- Sidebar -->
+
+          <div class="uk-width-1-1 uk-width-expand@m">
+            <article class="uk-article">
+              <h1 id="apidoc">ZWL API Documentation</h1>
+              <h3 id="intro">Introduction</h3>
+              <p class="uk-text-lead uk-text-muted">
+                Welcome to the ZWL API documentation. This API provides access
+                to various services, including user management, crop
+                marketplace, market price reports, and farmer data. Below is the
+                comprehensive API reference for interacting with these services.
+              </p>
+
+              <div class="article-content link-primary">
+                <h3 style="padding-top: 30px" id="baseurl">Base URL</h3>
+                <div class="language-bash highlighter-rouge">
+                  <div class="highlight">
+                    <pre
+                      class="highlight"
+                    ><code>https://apidocs.zowasel.com/v1</code></pre>
+                  </div>
+                </div>
+                <div>
+                  <h3 id="auth">Authentication</h3>
+                  <p>
+                    All API requests require authentication via an API key.
+                    Obtain your API key from Zowasel by onboarding with our technical team and generating a
+                    key.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 id="header">Header</h3>
+                  <pre
+                    class="highlight"
+                  ><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                  <h3 id="endpoints">Endpoints</h3>
+                </div>
+
+                <!-- User Management -->
+                  <h3 style="margin-bottom: 10px">User Management</h3>
+                  <div>
+                  <h4 style="margin-top: 20px" id="createuser">1. <span>Create User</span></h4>
+                  <h4 style="margin-top: 10px">POST/users</h4>
+                  <p style="margin-top: 14px">Creates a new user.</p>
+                  <div>
+                    <h4 style="margin-top: 20px">Request Body:</h4>
+                  <pre class="highlight"><code>
+                    {
+                    "email": "string",
+                    "password": "string",
+                    "firstname": "string",
+                    "lastname": "string",
+                    "mobile": "string",
+                    "usertype": "merchant or corporate",
+                    "isbusiness": "boolean",
+                    "businessname": "string",
+                    "level": "string",
+                    "belongsto": "string",
+                    "region": "string",
+                    "rolename": "string",
+                    "permissions": ["string"]
+                  }
+                  </code></pre>
+                  </div>
+                  <h4 style="margin-top: 20px">Response:</h4>
+                  <pre class="highlight"><code>
+                    {
+                      "_id": "unique_user_id",
+                      "email": "string",
+                      "password": "hashed_password",
+                      "firstname": "string",
+                      "lastname": "string",
+                      "mobile": "string",
+                      "usertype": "merchant or corporate",
+                      "isbusiness": "boolean",
+                      "businessname": "string",
+                      "level": "string",
+                      "dateCreated": "YYYY-MM-DDTHH:MM:SSZ",
+                      "dateUpdated": "YYYY-MM-DDTHH:MM:SSZ",
+                      "belongsto": "string",
+                      "region": "string",
+                      "rolename": "string",
+                      "permissions": ["string"]
+                    }
+                                      
+                  </code></pre>
+                </div>
+                <div>
+                  <h4 style="margin-top: 20px" id="userdetail">2. <span>Get User Details</span></h4>
+                  <h4 style="margin-top: 10px">GET/users/{id}</h4>
+                  <p style="margin-top: 14px">Retrieves details of a specific user by ID.</p>
+                  <h4 style="margin-top: 10px">Parameters:</h4>
+                  <p style="margin-top: 14px">id (string): The ID of the user.</p>
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "_id": "unique_user_id",
+                          "email": "string",
+                          "password": "hashed_password",
+                          "firstname": "string",
+                          "lastname": "string",
+                          "mobile": "string",
+                          "usertype": "merchant or corporate",
+                          "isbusiness": "boolean",
+                          "businessname": "string",
+                          "level": "string",
+                          "dateCreated": "YYYY-MM-DDTHH:MM:SSZ",
+                          "dateUpdated": "YYYY-MM-DDTHH:MM:SSZ",
+                          "belongsto": "string",
+                          "region": "string",
+                          "rolename": "string",
+                          "permissions": ["string"]
+                        }
+                        
+                                          
+                      </code></pre>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 style="margin-top: 20px" id="updateuser">3. <span>Update User</span></h4>
+                  <h4 style="margin-top: 10px">PUT/users/{id}</h4>
+                  <p style="margin-top: 14px">Update details of a specific user.</p>
+                  <h4 style="margin-top: 10px">Parameters:</h4>
+                  <p style="margin-top: 14px">id (string): The ID of the user.</p>
+                  <div>
+                    <h4 style="margin-top: 20px">Request body:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "email": "string",
+                          "password": "string",
+                          "firstname": "string",
+                          "lastname": "string",
+                          "mobile": "string",
+                          "usertype": "merchant or corporate",
+                          "isbusiness": "boolean",
+                          "businessname": "string",
+                          "level": "string",
+                          "belongsto": "string",
+                          "region": "string",
+                          "rolename": "string",
+                          "permissions": ["string"]
+                        }
+                        
+                      </code></pre>
+                      <h4 style="margin-top: 20px">Response:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "status": "success",
+                          "message": "User details updated successfully."
+                        }
+                      </code></pre>
+                      
+                  </div>
+                </div>
+
+                <div>
+                  <h4 style="margin-top: 20px" id="deleteuser">4. <span>Delete User</span></h4>
+                  <h4 style="margin-top: 10px">DELETE/users/{id}</h4>
+                  <p style="margin-top: 14px">Delete a specific user.</p>
+                  <h4 style="margin-top: 10px">Parameters:</h4>
+                  <p style="margin-top: 14px">id (string): The ID of the user.</p>
+                  <div>
+                      <h4 style="margin-top: 20px">Response:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "status": "success",
+                          "message": "User deleted successfully."
+                        }
+                      </code></pre>
+                      
+                  </div>
+                </div>
+                <!-- User Management -->
+
+                <!-- Crop Market place Start -->
+                  <h3 style="margin-bottom: 10px">Crop Marketplace</h3>
+                  <div>
+                  <!-- Create Crop Listing -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="createcrop">1. <span>Create Crop Listing</span></h4>
+                    <h4 style="margin-top: 10px">POST/marketplace/crops</h4>
+                    <p style="margin-top: 14px">Creates a new crop listing in the marketplace.</p>
+                  </div>
+                  <!-- Create Crop Listing -->
+
+                  <!-- Create Crop Listing Request Body -->
+                  <div>
+                    <h4 style="margin-top: 20px">Request Body:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "businessid": "string",
+                        "type": "string",
+                        "categoryid": "string",
+                        "subcategoryid": "string",
+                        "category": "string",
+                        "subcategory": "string",
+                        "description": "string",
+                        "currency": "string",
+                        "state": "string",
+                        "negotiable": "string",
+                        "country": "string",
+                        "images": ["string"],
+                        "videos": ["string"],
+                        "productcolor": "string",
+                        "color": "string",
+                        "productionmethod": "string",
+                        "testweight": "string",
+                        "application": "string",
+                        "packaging": "string",
+                        "amount": "string",
+                        "global": "string",
+                        "quantity": "string",
+                        "specifications": "string",
+                        "cropwanted": {
+                          "zipcode": "string",
+                          "warehouseaddress": "string"
+                        },
+                        "cropauction": {
+                          "startdate": "string",
+                          "enddate": "string",
+                          "minimumbid": "string"
+                        },
+                        "contentregion": "string"
+                      }
+                      
+                    </code></pre>
+                  </div>
+                  <!-- Create Crop Listing Request Body -->
+
+                  <!-- Create Crop Listing Response -->
+                  <h4 style="margin-top: 20px">Response:</h4>
+                  <pre class="highlight"><code>
+                    {
+                      "_id": "unique_crop_id",
+                      "businessid": "string",
+                      "type": "string",
+                      "categoryid": "string",
+                      "subcategoryid": "string",
+                      "category": "string",
+                      "subcategory": "string",
+                      "description": "string",
+                      "currency": "string",
+                      "state": "string",
+                      "negotiable": "string",
+                      "country": "string",
+                      "images": ["string"],
+                      "videos": ["string"],
+                      "productcolor": "string",
+                      "color": "string",
+                      "productionmethod": "string",
+                      "testweight": "string",
+                      "application": "string",
+                      "packaging": "string",
+                      "amount": "string",
+                      "global": "string",
+                      "quantity": "string",
+                      "specifications": "string",
+                      "cropwanted": {
+                        "zipcode": "string",
+                        "warehouseaddress": "string"
+                      },
+                      "cropauction": {
+                        "startdate": "string",
+                        "enddate": "string",
+                        "minimumbid": "string"
+                      },
+                      "active": 1,
+                      "contentregion": "string",
+                      "deletedby": "none",
+                      "createdat": "YYYY-MM-DDTHH:MM:SSZ",
+                      "updatedat": "YYYY-MM-DDTHH:MM:SSZ"
+                    }
+                    
+                                      
+                  </code></pre>
+                  <!-- Create Crop Listing Response -->
+                </div>
+
+                <div>
+                  <!-- Get Crop Listing -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="getcrop">2. <span>Get Crop Listing</span></h4>
+                    <h4 style="margin-top: 10px">GET/marketplace/crops/{id}</h4>
+                    <p style="margin-top: 14px">Retrieves details of a specific crop listing by ID.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the crop listing.</p>
+                  </div>
+                  <!-- Get Crop Listing -->
+
+                  <!-- Get Crop Listing Response-->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "_id": "unique_crop_id",
+                          "businessid": "string",
+                          "type": "string",
+                          "categoryid": "string",
+                          "subcategoryid": "string",
+                          "category": "string",
+                          "subcategory": "string",
+                          "description": "string",
+                          "currency": "string",
+                          "state": "string",
+                          "negotiable": "string",
+                          "country": "string",
+                          "images": ["string"],
+                          "videos": ["string"],
+                          "productcolor": "string",
+                          "color": "string",
+                          "productionmethod": "string",
+                          "testweight": "string",
+                          "application": "string",
+                          "packaging": "string",
+                          "amount": "string",
+                          "global": "string",
+                          "quantity": "string",
+                          "specifications": "string",
+                          "cropwanted": {
+                            "zipcode": "string",
+                            "warehouseaddress": "string"
+                          },
+                          "cropauction": {
+                            "startdate": "string",
+                            "enddate": "string",
+                            "minimumbid": "string"
+                          },
+                          "active": 1,
+                          "contentregion": "string",
+                          "deletedby": "none",
+                          "createdat": "YYYY-MM-DDTHH:MM:SSZ",
+                          "updatedat": "YYYY-MM-DDTHH:MM:SSZ"
+                        }               
+                      </code></pre>
+                  </div>
+                  <!-- Get Crop Listing Response-->
+                  
+                </div>
+
+                <div>
+                  <!-- Update Crop Listing -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="updatecrop">3. <span>Update Crop Listing</span></h4>
+                    <h4 style="margin-top: 10px">PUT/marketplace/crops/{id}</h4>
+                    <p style="margin-top: 14px">Update details of a specific crop listing.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the crop listing.</p>
+                  </div>
+                  <!-- Update Crop Listing -->
+
+                  <!-- Update Crop Listing Request Body -->
+                  <div>
+                    <h4 style="margin-top: 20px">Request body:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "businessid": "string",
+                          "type": "string",
+                          "categoryid": "string",
+                          "subcategoryid": "string",
+                          "category": "string",
+                          "subcategory": "string",
+                          "description": "string",
+                          "currency": "string",
+                          "state": "string",
+                          "negotiable": "string",
+                          "country": "string",
+                          "images": ["string"],
+                          "videos": ["string"],
+                          "productcolor": "string",
+                          "color": "string",
+                          "productionmethod": "string",
+                          "testweight": "string",
+                          "application": "string",
+                          "packaging": "string",
+                          "amount": "string",
+                          "global": "string",
+                          "quantity": "string",
+                          "specifications": "string",
+                          "cropwanted": {
+                            "zipcode": "string",
+                            "warehouseaddress": "string"
+                          },
+                          "cropauction": {
+                            "startdate": "string",
+                            "enddate": "string",
+                            "minimumbid": "string"
+                          }
+                        }
+                      </code></pre>
+                  </div>
+                  <!-- Update Crop Listing Request Body -->
+
+                  <!-- Update Crop Listing Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                    <pre class="highlight"><code>
+                      {
+                      "status": "success",
+                      "message": "Crop listing updated successfully."
+                    }
+                    </code></pre>
+                  </div>
+                  <!-- Update Crop Listing Response -->
+                  
+                </div>
+
+                <div>
+                  <!-- Delete Crop Listing -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="deletecrop">4. <span>Delete Crop Listing</span></h4>
+                    <h4 style="margin-top: 10px">DELETE/marketplace/crops/{id}</h4>
+                    <p style="margin-top: 14px">Delete a specific crop listing.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the crop listing.</p>
+                  </div>
+                  <!-- Delete Crop Listing -->
+
+                  <!-- Delete Crop Listing Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "status": "success",
+                        "message": "Crop listing deleted successfully."
+                      }                        
+                    </code></pre>
+                </div>
+                  <!-- Delete Crop Listing Response -->
+                  
+                </div>
+                <!-- Crop Market place -->
+
+                <!-- Market Price Report Section -->
+                  <div>
+                    <h3 style="margin-bottom: 10px">Market Price Reports</h3>
+                  <!-- Create Market Price Report -->
+                    <div>
+                      <h4 style="margin-top: 20px" id="createmarket">1. <span>Create Market Price Reports</span><h4>
+                      <h4 style="margin-top: 10px">POST/marketprice/reports</h4>
+                      <p style="margin-top: 14px">Creates a new market price report.</p>
+                    </div>
+                  <!-- Create Market Price Report -->
+
+                  <!-- Create Market Price Report Request Body -->
+                  <div>
+                    <h4 style="margin-top: 20px">Request Body:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "region": "string",
+                        "cropcategory": "string",
+                        "cropsubcategory": "string",
+                        "pricetype": "string",
+                        "contentregion": "string",
+                        "weighttype": "string",
+                        "color": "string",
+                        "quantity": "string",
+                        "minimumprice": "number",
+                        "maximumprice": "number",
+                        "datecollected": "string",
+                        "state": "string",
+                        "market": "string",
+                        "countrycustom": "string",
+                        "countryflag": "string"
+                      }                    
+                    </code></pre>
+                  </div>
+                  <!-- Create Market Price Report Request Body -->
+
+                  <!-- Create Market Price Report Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "_id": "unique_report_id",
+                        "region": "string",
+                        "cropcategory": "string",
+                        "cropsubcategory": "string",
+                        "pricetype": "string",
+                        "contentregion": "string",
+                        "weighttype": "string",
+                        "color": "string",
+                        "quantity": "string",
+                        "minimumprice": "number",
+                        "maximumprice": "number",
+                        "average": "number",
+                        "state": "string",
+                        "market": "string",
+                        "countrycustom": "string",
+                        "countryflag": "string",
+                        "datecollected": "string",
+                        "tempdelete": 0,
+                        "deletedby": "none",
+                        "createdat": "YYYY-MM-DD",
+                        "updatedat": "YYYY-MM-DDTHH:MM:SSZ"
+                      }                                   
+                    </code></pre>
+                  </div>
+                  <!-- Create Market Price Report Response -->
+                </div>
+
+                <div>
+                  <!-- Get Market Price Report -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="getmarket">2. <span>Get Market Price Report</span></h4>
+                    <h4 style="margin-top: 10px">GET/marketprice/reports/{id}</h4>
+                    <p style="margin-top: 14px">Retrieves details of a specific market price report by ID.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the market price report.</p>
+                  </div>
+                  <!-- Get Market Price Report -->
+                  
+                  <!-- Get Market Price Report Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "_id": "unique_report_id",
+                          "region": "string",
+                          "cropcategory": "string",
+                          "cropsubcategory": "string",
+                          "pricetype": "string",
+                          "contentregion": "string",
+                          "weighttype": "string",
+                          "color": "string",
+                          "quantity": "string",
+                          "minimumprice": "number",
+                          "maximumprice": "number",
+                          "average": "number",
+                          "state": "string",
+                          "market": "string",
+                          "countrycustom": "string",
+                          "countryflag": "string",
+                          "datecollected": "string",
+                          "tempdelete": 0,
+                          "deletedby": "none",
+                          "createdat": "YYYY-MM-DD",
+                          "updatedat": "YYYY-MM-DDTHH:MM:SSZ"
+                        }                                
+                      </code></pre>
+                  </div>
+                  <!-- Get Market Price Report Response -->
+                </div>
+
+                <div>
+                  <!-- Update Market Price Report -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="updatemarket">3. <span>Update Market Price Report</span></h4>
+                    <h4 style="margin-top: 10px">PUT/marketprice/reports/{id}</h4>
+                    <p style="margin-top: 14px">Update details of a specific market price report.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the market price report.</p>
+                  </div>
+                  <!-- Update Market Price Report -->
+
+                  <!-- Update Market Price Report Request Body -->
+                  <div>
+                    <h4 style="margin-top: 20px">Request body:</h4>
+                      <pre class="highlight"><code>
+                          {
+                            "region": "string",
+                            "cropcategory": "string",
+                            "cropsubcategory": "string",
+                            "pricetype": "string",
+                            "contentregion": "string",
+                            "weighttype": "string",
+                            "color": "string",
+                            "quantity": "string",
+                            "minimumprice": "number",
+                            "maximumprice": "number",
+                            "datecollected": "string",
+                            "state": "string",
+                            "market": "string",
+                            "countrycustom": "string",
+                            "countryflag": "string"
+                          }                          
+                      </code></pre>
+                  </div>
+                  <!-- Update Market Price Report Request Body -->
+
+                  <!-- Update Market Price Report Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                    <pre class="highlight">
+                      <code>
+                      {
+                        "status": "success",
+                        "message": "Market price report updated successfully."
+                      }
+                      </code>
+                    </pre>
+                  </div>
+                  <!-- Update Market Price Report Response -->
+                  
+                      
+                </div>
+
+                <div>
+                  <!-- Delete Market Price Report -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="deletemarket">4. <span>Delete Market Price Report</span></h4>
+                    <h4 style="margin-top: 10px">DELETE/marketprice/reports/{id}</h4>
+                    <p style="margin-top: 14px">Delete a specific market price report.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the market price report.</p>
+                  </div>
+                  <!-- Delete Market Price Report -->
+
+                  <!-- Delete Market Price Report Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "status": "success",
+                        "message": "Market price report deleted successfully."
+                      }                                               
+                    </code></pre>  
+                </div>
+                  <!-- Delete Market Price Report Response -->
+                  
+                </div>
+                <!-- Market Price Report End -->
+
+                <!-- Farmer Data Section Start-->
+                <h3 style="margin-bottom: 10px">Farmer Market</h3>
+                  <div>
+                  <!-- Create Farmer -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="createfarmer">1. <span>Create Farmer</span></h4>
+                    <h4 style="margin-top: 10px">POST/farmers</h4>
+                    <p style="margin-top: 14px">Creates a new farmer record.</p>
+                  </div>
+                  <!-- Create Farmer -->
+
+                  <!-- Create Farmer Request Body -->
+                  <div>
+                    <h4 style="margin-top: 20px">Request Body:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "businessid": "string",
+                        "passport": "string",
+                        "email": "string",
+                        "firstname": "string",
+                        "lastname": "string",
+                        "middlename": "string",
+                        "telephone1": "string",
+                        "telephone2": "string",
+                        "gender": "string",
+                        "dateofbirth": "string",
+                        "maritalstatus": "string",
+                        "country": "string",
+                        "countryflag": "string",
+                        "state": "string",
+                        "town": "string",
+                        "address": "string",
+                        "bankname": "string",
+                        "accountname": "string",
+                        "bankaccountnumber": "string",
+                        "bvn": "string",
+                        "contentregion": "string",
+                        "nin": "string",
+                        "bvnimage": "string",
+                        "ninimage": "string",
+                        "idcardtype": "string",
+                        "idcardfront": "string",
+                        "idcardback": "string",
+                        "nextofkinfullname": "string",
+                        "nextofkinmobile": "string",
+                        "nextofkinrelationship": "string",
+                        "channel": "string"
+                      }                              
+                    </code></pre>
+                  </div>
+                  <!-- Create Farmer Request Body -->
+
+                  <!-- Create Farmer Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "_id": "unique_farmer_id",
+                        "businessid": "string",
+                        "passport": "string",
+                        "email": "string",
+                        "firstname": "string",
+                        "lastname": "string",
+                        "middlename": "string",
+                        "telephone1": "string",
+                        "telephone2": "string",
+                        "gender": "string",
+                        "dateofbirth": "string",
+                        "maritalstatus": "string",
+                        "country": "string",
+                        "countryflag": "string",
+                        "state": "string",
+                        "town": "string",
+                        "address": "string",
+                        "bankname": "string",
+                        "accountname": "string",
+                        "bankaccountnumber": "string",
+                        "bvn": "string",
+                        "contentregion": "string",
+                        "nin": "string",
+                        "bvnimage": "string",
+                        "ninimage": "string",
+                        "idcardtype": "string",
+                        "idcardfront": "string",
+                        "idcardback": "string",
+                        "nextofkinfullname": "string",
+                        "nextofkinmobile": "string",
+                        "nextofkinrelationship": "string",
+                        "channel": "string",
+                        "tempdelete": 0,
+                        "deletedby": "none",
+                        "createdat": "YYYY-MM-DDTHH:MM:SSZ",
+                        "updatedat": "YYYY-MM-DDTHH:MM:SSZ"
+                      }                                                    
+                    </code></pre>
+                  </div>
+                  <!-- Create Farmer Response -->
+                </div>
+
+                <div>
+                  <!-- Get Farmer -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="getfarmer">2. <span>Get Farmer</span></h4>
+                    <h4 style="margin-top: 10px">GET/farmers/{id}</h4>
+                    <p style="margin-top: 14px">Retrieves details of a specific farmer by ID.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the farmer.</p>
+                  </div>
+                  <!-- Get Farmer -->
+
+                  <!-- Get Farmer Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "_id": "unique_farmer_id",
+                          "businessid": "string",
+                          "passport": "string",
+                          "email": "string",
+                          "firstname": "string",
+                          "lastname": "string",
+                          "middlename": "string",
+                          "telephone1": "string",
+                          "telephone2": "string",
+                          "gender": "string",
+                          "dateofbirth": "string",
+                          "maritalstatus": "string",
+                          "country": "string",
+                          "countryflag": "string",
+                          "state": "string",
+                          "town": "string",
+                          "address": "string",
+                          "bankname": "string",
+                          "accountname": "string",
+                          "bankaccountnumber": "string",
+                          "bvn": "string",
+                          "contentregion": "string",
+                          "nin": "string",
+                          "bvnimage": "string",
+                          "ninimage": "string",
+                          "idcardtype": "string",
+                          "idcardfront": "string",
+                          "idcardback": "string",
+                          "nextofkinfullname": "string",
+                          "nextofkinmobile": "string",
+                          "nextofkinrelationship": "string",
+                          "channel": "string",
+                          "tempdelete": 0,
+                          "deletedby": "none",
+                          "createdat": "YYYY-MM-DDTHH:MM:SSZ",
+                          "updatedat": "YYYY-MM-DDTHH:MM:SSZ"
+                        }                                                       
+                      </code></pre>
+                  </div>
+                  <!-- Get Farmer Response -->
+                </div>
+
+                <div>
+                  <!-- Update Farmer -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="updatefarmer">3. <span>Update Farmer</span></h4>
+                    <h4 style="margin-top: 10px">PUT/farmers/{id}</h4>
+                    <p style="margin-top: 14px">Update details of a specific farmer.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the farmer.</p>
+                  </div>
+                  <!-- Update Farmer -->
+
+                  <div>
+                      <!-- Update Farmer Request Body -->
+                      <h4 style="margin-top: 20px">Request body:</h4>
+                      <pre class="highlight"><code>
+                        {
+                          "businessid": "string",
+                          "passport": "string", 
+                          "email": "string", 
+                          "firstname": "string", 
+                          "lastname": "string", 
+                          "middlename": "string", 
+                          "telephone1": "string", 
+                          "telephone2": "string", 
+                          "gender": "string", 
+                          "dateofbirth": "string", 
+                          "maritalstatus": "string", 
+                          "country": "string", 
+                          "countryflag": "string", 
+                          "state": "string", 
+                          "town": "string", 
+                          "address": "string", 
+                          "bankname": "string", 
+                          "accountname": "string", 
+                          "bankaccountnumber": "string", 
+                          "bvn": "string", 
+                          "contentregion": "string", 
+                          "nin": "string", 
+                          "bvnimage": "string", 
+                          "ninimage": "string", 
+                          "idcardtype": "string", 
+                          "idcardfront": "string", 
+                          "idcardback": "string", 
+                          "nextofkinfullname": "string", 
+                          "nextofkinmobile": "string", 
+                          "nextofkinrelationship": "string", 
+                          "channel": "string" 
+                        }                        
+                    </code></pre>
+                      <!-- Update Farmer Request Body -->
+
+                      <!-- Update Farmer Response -->
+                      <h4 style="margin-top: 20px">Response:</h4>
+                        <pre class="highlight">
+                          <code>
+                            {
+                              "status": "success",
+                              "message": "Farmer details updated successfully."
+                            }
+                          </code>
+                        </pre>   
+                      <!-- Update Farmer Response -->
+                      
+                  </div>
+                </div>
+
+                <div>
+                  <!-- Delete Farmer -->
+                  <div>
+                    <h4 style="margin-top: 20px" id="deletefarmer">4. <span>Delete Farmer</span></h4>
+                    <h4 style="margin-top: 10px">DELETE/farmers/{id}</h4>
+                    <p style="margin-top: 14px">Delete a specific farmer record.</p>
+                    <h4 style="margin-top: 10px">Parameters:</h4>
+                    <p style="margin-top: 14px">id (string): The ID of the farmer record.</p>
+                  </div>
+                  <!-- Delete Farmer -->
+
+                  <!-- Delete Farmer Response -->
+                  <div>
+                    <h4 style="margin-top: 20px">Response:</h4>
+                    <pre class="highlight"><code>
+                      {
+                        "status": "success",
+                        "message": "Farmer deleted successfully."
+                      }                                                                      
+                    </code></pre>  
+                </div>
+                  <!-- Delete Farmer Response -->
+
+                  
+                </div>
+                <!-- Farmer Data Section End -->
+                
+                
+
+                
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+      
+      </div>
+    </footer> -->
+
+    <script src="js/awesomplete.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>
