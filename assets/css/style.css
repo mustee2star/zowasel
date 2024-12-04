@@ -4088,12 +4088,12 @@ Partner Area CSS
   /* Adjust font sizes in cards */
   .smallcard-cont h4, 
   .bigcard-cont h4 {
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .smallcard-cont h5, 
   .bigcard-cont h5 {
-    font-size: 14px;
+    font-size: 10px !important;
   }
 
   .smallcard-cont {
