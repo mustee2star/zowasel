@@ -5736,6 +5736,21 @@ Page Title Area CSS
 .page-privacy{
   background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/privacy.jpg) !important;
 }
+.page-aml-cft{
+  background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/aml.png) !important;
+}
+.page-conflict{
+  background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/conflict.jpg) !important;
+}
+.page-conduct{
+  background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/codeofconduct.jpg) !important;
+}
+.page-porders{
+  background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/orders.jpeg) !important;
+}
+.page-whistleblower{
+  background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/whistleblower.jpg) !important;
+}
 .page-terms{
   background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/terms.JPG) !important;
 }
