@@ -8715,3 +8715,52 @@ Buy Now Btn
  
   }
   
+   /* Reduce height for col-md-4 */
+   .cover-box {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Increase height for col-md-8 */
+.pdf-box {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.upload-box {
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    color: #6c757d;
+}
+
+.upload-box:hover {
+    border-color: #28a745;
+}
+
+.file-preview {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
