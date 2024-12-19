@@ -8730,7 +8730,7 @@ Buy Now Btn
 
 /* Increase height for col-md-8 */
 .pdf-box {
-    height: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8740,6 +8740,7 @@ Buy Now Btn
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 30px;
+    width: 700px;
 }
 
 .upload-box {
@@ -8747,7 +8748,7 @@ Buy Now Btn
     border-radius: 10px;
     padding: 30px;
     width: 100%;
-    color: #6c757d;
+    color: #F3F6F9 !important;
 }
 
 .upload-box:hover {
