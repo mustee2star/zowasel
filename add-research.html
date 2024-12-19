@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,41 +41,74 @@
         .container {
             margin-top: 30px;
         }
-
-       
     </style>
 </head>
+
 <body>
     <div class="container pt-4">
         <div class="row mb-4">
-            <div class="col"><h3 class="mb-4 fw-bold">Add Research Programs</h3>
-                <p class="text-muted">Add Cover image and upload Research PDF below</p></div>
-                <div class="col"> <!-- Done Button -->
-                    <div class="text-end mt-3">
-                        <button class="btn btn-success" id="doneButton">Done</button>
-                    </div>
+            <div class="col">
+                <h4>
+                    <a href="index.html#researchprogram"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000"><path d="M400-240 160-480l241-241 43 42-169 169h526v60H275l168 168-43 42Z"/></svg></a>
+                    <span class="mb-4 fw-bold">Add Research Programs</span>
+                </h4>
+                <p class="text-muted ms-5">Add Cover image and upload Research PDF below</p>
+            </div>
+            <div class="col"> <!-- Done Button -->
+                <div class="text-end mt-3 ">
+                    <button class="btn btn-success" id="doneButton">Done</button>
                 </div>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-4">
-                <div class="cover-box position-relative text-center" style="width: 100%; height: 300px; border: 1px solid #ddd; overflow: hidden;">
+                <div class="cover-box position-relative text-center"
+                    style="width: 100%; height: 300px; border: 1px solid #ddd; overflow: hidden;">
                     <!-- Placeholder text and icon -->
                     <div id="uploadContent" class="d-flex flex-column justify-content-center align-items-center h-100">
                         <p class="fw-bold mb-2">Cover Image</p>
                         <label for="coverImage" class="upload-box text-center" style="cursor: pointer;">
                             <input type="file" id="coverImage" class="d-none" accept="image/*">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#75FB4C">
-                                <path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px"
+                                fill="#75FB4C">
+                                <path
+                                    d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
                             </svg>
                             <p class="mt-2">Upload Cover Image</p>
                         </label>
                     </div>
                     <!-- Placeholder for the uploaded image -->
-                    <img id="coverPreview" src="#" alt="Cover Preview" class="d-none position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover;">
+                    <img id="coverPreview" src="#" alt="Cover Preview"
+                        class="d-none position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover;">
                 </div>
-                
-                <div id="textSummary" class="mt-3 p-3 border rounded" style="border-color: #ddd;">
+
+                <div id="textSummary" class="mt-3 p-3 border rounded card" style="border-color: #ddd;">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="fw-bold mb-2">PDF Heading</label>
+                                </div>
+                                <div class="col text-end">
+                                    <p id="chaLimit" class="text-muted mb-2">20 characters remaining</p>
+                                </div>
+                            </div>
+                            <input type="text" 
+                                   class="form-control mb-2 me-2" 
+                                   name="" 
+                                   id="headInput" 
+                                   style="overflow: hidden; width: 370px; max-width: 400px;" 
+                                   maxlength="20" 
+                                   placeholder="Enter Heading here">
+                        </div>
+                        
+                        
+                        <p id="textMessages" class="text-muted mb-2 text-truncate" style="max-width: 100%;">
+                            No headings provided yet.
+                        </p>
+                    </div>
+                    <hr>
                     <div class="row">
                         <div class="col">
                             <h6 class="fw-bold">PDF Summary</h6>
@@ -84,60 +118,59 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input 
-                            type="text" 
-                            id="summaryInput" 
-                            class="form-control me-2" 
+                        <input type="text" id="summaryInput" class="form-control me-2"
                             placeholder="Enter summary here..." 
-                            style="flex: 1; height: 110px;"
-                            maxlength="80"
-                        >
+                            style="flex: 1; height: 110px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;" 
+                            maxlength="80">
                     </div>
-                    <p id="textMessage" class="text-muted mt-2">No summary provided yet.</p>
+                    <p id="textMessage" class="text-muted mt-2 text-truncate" style="max-width: 100%;">
+                        No summary provided yet.
+                    </p>
                 </div>
                 
+
                 <script>
                     document.addEventListener('DOMContentLoaded', () => {
-    const coverImageInput = document.getElementById('coverImage');
-    const coverPreview = document.getElementById('coverPreview');
-    const uploadContent = document.getElementById('uploadContent');
+                        const coverImageInput = document.getElementById('coverImage');
+                        const coverPreview = document.getElementById('coverPreview');
+                        const uploadContent = document.getElementById('uploadContent');
 
-    // Handle cover image upload
-    coverImageInput.addEventListener('change', () => {
-        const file = coverImageInput.files[0];
+                        // Handle cover image upload
+                        coverImageInput.addEventListener('change', () => {
+                            const file = coverImageInput.files[0];
 
-        if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
+                            if (file && file.type.startsWith('image/')) {
+                                const reader = new FileReader();
 
-            reader.onload = (event) => {
-                coverPreview.src = event.target.result;
-                coverPreview.classList.remove('d-none'); // Show the image
-                uploadContent.classList.add('d-none'); // Hide the placeholder
-            };
+                                reader.onload = (event) => {
+                                    coverPreview.src = event.target.result;
+                                    coverPreview.classList.remove('d-none'); // Show the image
+                                    uploadContent.classList.add('d-none'); // Hide the placeholder
+                                };
 
-            reader.readAsDataURL(file);
-        } else {
-            alert('Please upload a valid image file.');
-        }
-    });
-});
+                                reader.readAsDataURL(file);
+                            } else {
+                                alert('Please upload a valid image file.');
+                            }
+                        });
+                    });
 
                 </script>
-                
+
             </div>
-            
+
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     const inputField = document.getElementById('summaryInput');
                     const charLimit = document.getElementById('charLimit');
                     const textMessage = document.getElementById('textMessage');
                     const maxChars = 80;
-                
+
                     // Update character count as the user types
                     inputField.addEventListener('input', () => {
                         const remainingChars = maxChars - inputField.value.length;
                         charLimit.textContent = `${remainingChars} characters remaining`;
-                
+
                         // Display the current input in the message
                         if (inputField.value.trim()) {
                             textMessage.textContent = `Summary: ${inputField.value}`;
@@ -146,15 +179,35 @@
                         }
                     });
                 });
-                </script>
-                
-            
-            
+                // PDF Header
+                document.addEventListener('DOMContentLoaded', () => {
+                    const inputFields = document.getElementById('headInput');
+                    const chaLimit = document.getElementById('chaLimit');
+                    const textMessages = document.getElementById('textMessages');
+                    const maxChas = 20;
+
+                    // Update character count as the user types
+                    inputFields.addEventListener('input', () => {
+                        const remainingChas = maxChas - inputFields.value.length;
+                        chaLimit.textContent = `${remainingChas} characters remaining`;
+
+                        // Display the current input in the message
+                        if (inputFields.value.trim()) {
+                            textMessages.textContent = `Heading: ${inputFields.value}`;
+                        } else {
+                            textMessages.textContent = "No heading provided yet.";
+                        }
+                    });
+                });
+            </script>
+
+
+
 
             <!-- PDF Upload Section -->
             <div class="col-md-8">
                 <div class="pdf-box ms-5">
-                    <h5 class="fw-bold mb-4">Upload PDF</h5>
+                    <h4 class="fw-bold mb-4 mt-3">Upload PDF</h4>
                     <div class="upload-box" id="pdfDropArea">
                         <label for="pdfFile" class="d-block">
                             <input type="file" id="pdfFile" class="d-none" accept=".pdf">
@@ -176,90 +229,96 @@
             </div>
         </div>
 
-       
+
     </div>
 
-    
-<!-- Modal -->
-<div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold" id="summaryModalLabel">Upload Summary</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Success Message -->
-                <div id="successMessage" class="alert alert-success text-center d-none" role="alert">
-                    Upload Successful!
-                </div>
 
-                <div class="text-center">
-                    <!-- Cover Image Preview -->
-                    <img id="modalCoverPreview" src="#" alt="Cover Image Preview" class="d-none" style="width: 300px; height: 400px; object-fit: cover; border: 1px solid #ddd;">
+    <!-- Modal -->
+    <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="summaryModalLabel">Upload Summary</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <hr>
-                <div>
-                    <!-- Summary Text -->
-                    <p id="modalSummaryText" class="fw-bold"></p>
-                    <p id="modalPdfName" class="text-success"></p>
+                <div class="modal-body">
+                    <!-- Success Message -->
+                    <div id="successMessage" class="alert alert-success text-center d-none" role="alert">
+                        Upload Successful!
+                    </div>
+
+                    <div class="text-center">
+                        <!-- Cover Image Preview -->
+                        <img id="modalCoverPreview" src="#" alt="Cover Image Preview" class="d-none"
+                            style="width: 300px; height: 400px; object-fit: cover; border: 1px solid #ddd;">
+                    </div>
+                    <hr>
+                    <div>
+                        <!-- Summary Text -->
+                        <p id="modalHeadText" class="fw-bold"></p>
+                        <p id="modalSummaryText" class="fw-bold"></p>
+                        <p id="modalPdfName" class="text-success"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <a href="index.html#researchprogram"><button type="button" class="btn btn-primary">Go Back</button></a>
+                </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const doneButton = document.getElementById('doneButton');
+                const coverImageInput = document.getElementById('coverImage');
+                const pdfFileInput = document.getElementById('pdfFile');
+                const summaryInput = document.getElementById('summaryInput');
+                const headInput = document.getElementById('headInput');
+                const modalCoverPreview = document.getElementById('modalCoverPreview');
+                const modalHeadText = document.getElementById('modalHeadText');
+                const modalSummaryText = document.getElementById('modalSummaryText');
+                const modalPdfName = document.getElementById('modalPdfName');
+                const successMessage = document.getElementById('successMessage');
+                const modal = new bootstrap.Modal(document.getElementById('summaryModal'));
+
+                // Handle "Done" button click
+                doneButton.addEventListener('click', () => {
+                    const coverImageFile = coverImageInput.files[0];
+                    const pdfFile = pdfFileInput.files[0];
+                    const headText = headInput.value.trim();
+                    const summaryText = summaryInput.value.trim();
+
+                    if (!coverImageFile || !pdfFile || !summaryText|| !summaryText) {
+                        alert('Please upload a cover image, PDF file, Headings and provide a summary before proceeding.');
+                        return;
+                    }
+
+                    // Set Cover Image Preview in Modal
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        modalCoverPreview.src = event.target.result;
+                        modalCoverPreview.classList.remove('d-none');
+                    };
+                    reader.readAsDataURL(coverImageFile);
+
+                    // Set Summary and PDF Name
+                    modalHeadText.textContent = `Heading: ${headText}`;
+                    modalSummaryText.textContent = `Summary: ${summaryText}`;
+                    modalPdfName.textContent = `Uploaded PDF: ${pdfFile.name}`;
+
+                    // Show Success Message
+                    successMessage.classList.remove('d-none');
+
+                    // Show the modal
+                    modal.show();
+
+                    // Hide Success Message after 3 seconds
+                    setTimeout(() => {
+                        successMessage.classList.add('d-none');
+                    }, 9000);
+                });
+            });
+
+        </script>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const doneButton = document.getElementById('doneButton');
-    const coverImageInput = document.getElementById('coverImage');
-    const pdfFileInput = document.getElementById('pdfFile');
-    const summaryInput = document.getElementById('summaryInput');
-    const modalCoverPreview = document.getElementById('modalCoverPreview');
-    const modalSummaryText = document.getElementById('modalSummaryText');
-    const modalPdfName = document.getElementById('modalPdfName');
-    const successMessage = document.getElementById('successMessage');
-    const modal = new bootstrap.Modal(document.getElementById('summaryModal'));
-
-    // Handle "Done" button click
-    doneButton.addEventListener('click', () => {
-        const coverImageFile = coverImageInput.files[0];
-        const pdfFile = pdfFileInput.files[0];
-        const summaryText = summaryInput.value.trim();
-
-        if (!coverImageFile || !pdfFile || !summaryText) {
-            alert('Please upload a cover image, PDF file, and provide a summary before proceeding.');
-            return;
-        }
-
-        // Set Cover Image Preview in Modal
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            modalCoverPreview.src = event.target.result;
-            modalCoverPreview.classList.remove('d-none');
-        };
-        reader.readAsDataURL(coverImageFile);
-
-        // Set Summary and PDF Name
-        modalSummaryText.textContent = `Summary: ${summaryText}`;
-        modalPdfName.textContent = `Uploaded PDF: ${pdfFile.name}`;
-
-        // Show Success Message
-        successMessage.classList.remove('d-none');
-
-        // Show the modal
-        modal.show();
-
-        // Hide Success Message after 3 seconds
-        setTimeout(() => {
-            successMessage.classList.add('d-none');
-        }, 9000);
-    });
-});
-
-    </script>
-</div>
 
 
 
@@ -293,7 +352,7 @@
         let uploadedPDF = '';
 
         // Handle PDF file upload
-        pdfFileInput.addEventListener('change', function(event) {
+        pdfFileInput.addEventListener('change', function (event) {
             const file = event.target.files[0];
 
             if (file && file.type === "application/pdf") {
@@ -306,7 +365,7 @@
         });
 
         // View PDF in Modal
-        viewFileButton.addEventListener('click', function() {
+        viewFileButton.addEventListener('click', function () {
             if (uploadedPDF) {
                 pdfViewer.src = uploadedPDF;
                 const pdfModal = new bootstrap.Modal(document.getElementById('pdfModal'));
@@ -317,7 +376,7 @@
         });
 
         // Remove PDF file
-        removeFileButton.addEventListener('click', function() {
+        removeFileButton.addEventListener('click', function () {
             pdfFileInput.value = "";
             filePreview.classList.add('d-none');
             fileNameSpan.textContent = "";
@@ -326,4 +385,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -8730,11 +8730,9 @@ Buy Now Btn
 
 /* Increase height for col-md-8 */
 .pdf-box {
-    height: 100%;
+    height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -8748,6 +8746,7 @@ Buy Now Btn
     border-radius: 10px;
     padding: 30px;
     width: 100%;
+    height:200px;
     color: #F3F6F9 !important;
 }
 
@@ -8780,4 +8779,17 @@ Buy Now Btn
 /* Ensure text inside the link doesn’t change color on hover */
 a:hover .hover-card {
   text-decoration: none;
+}
+
+#summaryInput {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+#textMessage {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
