@@ -5745,6 +5745,9 @@ Page Title Area CSS
 .page-conduct{
   background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/codeofconduct.jpg) !important;
 }
+.page-deforestation{
+  background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/Deforestation.jpg) !important;
+}
 .page-porders{
   background-image: linear-gradient(rgba(13, 22, 58, 0.7), rgba(6, 10, 26, 0.7)), url(../img/orders.jpeg) !important;
 }
@@ -8793,3 +8796,143 @@ a:hover .hover-card {
   text-overflow: ellipsis;
   max-width: 100%;
 }
+
+
+
+<script>
+const options = {
+  method: "GET",
+  headers: {},
+};
+
+fetch(
+  "https://pwa.zowasel.com/api/blogs?pagination%5Bpage%5D=1&pagination%5BpageSize%5D=20",
+  options
+)
+  .then((response) => response.json())
+  .then((data) => {
+    const articles = data.data;
+
+    if (Array.isArray(articles)) {
+      // Sort articles by creation date in descending order
+      const sortedArticles = articles.sort(
+        (a, b) =>
+          new Date(b.attributes.publishedAt) -
+          new Date(a.attributes.publishedAt)
+      );
+
+      // Get the latest 3 articles
+      const latestArticles = sortedArticles.slice(0, 3);
+
+      // Select the latest articles container
+      const latestArticlesContainer = document.querySelector(
+        "#latest-articles-container"
+      );
+
+      // Create a wrapper for the stacked cards
+      const latestArticlesContent = `
+//         <div class="container px-4 text-center">
+//   <div class="row gx-5">
+//     <!-- First Column -->
+//     <div class="col-lg-6 mb-3">
+//       <div class="card shadow-sm h-100" style="border-radius: 20px; position: relative;">
+//         <img src="${latestArticles[0].attributes.thumbnail}" class="card-img-top" 
+//           alt="${latestArticles[0].attributes.title}" 
+//           style="border-top-left-radius: 15px; border-top-right-radius: 15px; width: 100%; height: 700px; object-fit: cover;">
+//         <div style="position: absolute; top: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 5px 10px; border-radius: 20px;">
+//           5 min read
+//         </div>
+//         <div class="card-body text-start">
+//           <h7 class="card-title">${latestArticles[0].attributes.title}</h7>
+//           <p class="text-muted">
+//             ${latestArticles[0].attributes.content
+          //               ? latestArticles[0].attributes.content.substring(0, 80) + "..."
+          //               : "No content available"}
+          //           </p>
+          //           <a href="blogs-details.html?id=${latestArticles[0].id}">
+          //             <button class="btn default-btn" style="width: 140px;">Read more</button>
+          //           </a>
+          //         </div>
+          //       </div>
+          //     </div>
+
+          //     <!-- Second Column -->
+          //     <div class="col-lg-6 d-flex flex-column justify-content-between">
+          //       ${latestArticles
+          //         .slice(1)
+          //         .map(
+          //           (item, index) => `
+          //       <div class="card shadow-sm mb-3 h-100" style="border-radius: 20px;">
+          //         <img src="${item.attributes.thumbnail}" class="card-img-top" 
+          //           alt="${item.attributes.title}" 
+          //           style="border-top-left-radius: 15px; border-top-right-radius: 15px; width: 100%; height: 230px; object-fit: cover;">
+          //         <div class="card-body text-start">
+          //           <h7 class="card-title">${item.attributes.title}</h7>
+          //           <p class="text-muted">
+          //             ${item.attributes.content
+          //               ? item.attributes.content.substring(0, 80) + "..."
+          //               : "No content available"}
+          //           </p>
+          //           <a href="blogs-details.html?id=${item.id}">
+          //             <button class="btn default-btn" style="width: 140px;">Read more</button>
+          //           </a>
+          //         </div>
+          //       </div>
+          //       `
+          //         )
+          //         .join("")}
+          //     </div>
+          //   </div>
+          // </div>
+
+          `;
+
+      latestArticlesContainer.innerHTML = latestArticlesContent;
+
+      // Select the all articles container
+      const articlesContainer =
+        document.querySelector("#all-articles .row");
+
+      // Populate the "All Articles" section
+      sortedArticles.forEach((item) => {
+        const article = item.attributes;
+        const articleId = item.id;
+        console.log("Test", article);
+
+        // Create the article card dynamically for the "All Articles" section
+        const articleCard = `
+        < div class="col-md-4 mb-4" >
+          <a href="blogs-details.html?id=${articleId}" class="text-decoration-none">
+            <div class="card shadow-sm" style="border-radius: 20px;">
+              <div class="p-2">
+                <img src="${article.thumbnail}" alt="${article.title
+          }" class="img-fluid my-4" style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px;">
+              </div>
+              <div class="card-body text-start">
+                <h5 class="text-start" style="color: inherit;">${article.title
+                }</h5>
+                <p class="text-muted">
+                  ${latestArticles[0].attributes.content
+                    ? latestArticles[0].attributes.content.substring(
+                      0,
+                      80
+                    ) + "..."
+                    : "No content available"
+                  }
+                </p>
+                <p class="text-muted">Published on ${new Date(
+                  article.publishedAt
+                ).toLocaleDateString()}</p>
+              </div>
+            </div>
+          </a>
+          </div >
+        `;
+        articlesContainer.insertAdjacentHTML("beforeend", articleCard);
+      });
+    } else {
+      console.error("Articles data is not an array:", articles);
+    }
+  })
+  .catch((error) => console.error("Error:", error));
+</script>
