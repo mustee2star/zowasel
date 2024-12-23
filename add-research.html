@@ -62,7 +62,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-12 col-md-4">
                 <div class="cover-box position-relative text-center"
                     style="width: 100%; height: 300px; border: 1px solid #ddd; overflow: hidden;">
                     <!-- Placeholder text and icon -->
@@ -80,31 +80,27 @@
                     </div>
                     <!-- Placeholder for the uploaded image -->
                     <img id="coverPreview" src="#" alt="Cover Preview"
-                        class="d-none position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover;">
+                        class="d-none position-absolute top-0 start-0 w-100 h-100 img-fluid" style="object-fit: cover;">
                 </div>
-
-                <div id="textSummary" class="mt-3 p-3 border rounded card" style="border-color: #ddd;">
+            
+                <div id="textSummary" class="mt-3 p-3 border rounded card">
                     <div class="row">
                         <div class="col">
                             <div class="row">
                                 <div class="col">
-                                    <label for="" class="fw-bold mb-2">PDF Heading</label>
+                                    <label for="headInput" class="fw-bold mb-2">PDF Heading</label>
                                 </div>
                                 <div class="col text-end">
                                     <p id="chaLimit" class="text-muted mb-2">20 characters remaining</p>
                                 </div>
                             </div>
                             <input type="text" 
-                                   class="form-control mb-2 me-2" 
-                                   name="" 
-                                   id="headInput" 
-                                   style="overflow: hidden; width: 100%; max-width: 400px;" 
-                                   maxlength="20" 
-                                   placeholder="Enter Heading here">
+                                class="form-control mb-2" 
+                                id="headInput" 
+                                maxlength="20" 
+                                placeholder="Enter Heading here">
                         </div>
-                        
-                        
-                        <p id="textMessages" class="text-muted mb-2 text-truncate" style="max-width: 100%;">
+                        <p id="textMessages" class="text-muted mb-2 text-truncate">
                             No headings provided yet.
                         </p>
                     </div>
@@ -116,47 +112,45 @@
                             <p id="charLimit" class="text-muted mb-2">80 characters remaining</p>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <input type="text" id="summaryInput" class="form-control me-2"
+                    <div>
+                        <input type="text" id="summaryInput" class="form-control"
                             placeholder="Enter summary here..." 
-                            style="flex: 1; height: 110px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;" 
-                            maxlength="80">
+                            maxlength="80" 
+                            style="height: 110px; text-overflow: ellipsis; word-wrap: break-word;">
                     </div>
-                    <p id="textMessage" class="text-muted mt-2 text-truncate" style="max-width: 100%;">
+                    <p id="textMessage" class="text-muted mt-2 text-truncate">
                         No summary provided yet.
                     </p>
                 </div>
-                
-
+            
                 <script>
                     document.addEventListener('DOMContentLoaded', () => {
                         const coverImageInput = document.getElementById('coverImage');
                         const coverPreview = document.getElementById('coverPreview');
                         const uploadContent = document.getElementById('uploadContent');
-
+            
                         // Handle cover image upload
                         coverImageInput.addEventListener('change', () => {
                             const file = coverImageInput.files[0];
-
+            
                             if (file && file.type.startsWith('image/')) {
                                 const reader = new FileReader();
-
+            
                                 reader.onload = (event) => {
                                     coverPreview.src = event.target.result;
                                     coverPreview.classList.remove('d-none'); // Show the image
                                     uploadContent.classList.add('d-none'); // Hide the placeholder
                                 };
-
+            
                                 reader.readAsDataURL(file);
                             } else {
                                 alert('Please upload a valid image file.');
                             }
                         });
                     });
-
                 </script>
-
             </div>
+            
 
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
@@ -204,28 +198,29 @@
 
 
             <!-- PDF Upload Section -->
-            <div class="col-md-8">
-                <div class="pdf-box ms-5">
-                    <h4 class="fw-bold mb-4 mt-3">Upload PDF</h4>
-                    <div class="upload-box" id="pdfDropArea">
+            <div class="col-12 col-md-8">
+                <div class="pdf-box ms-0 ms-md-5">
+                    <h4 class="fw-bold mb-4 mt-3 text-center text-md-start">Upload PDF</h4>
+                    <div class="upload-box text-center p-3 border border-secondary rounded" id="pdfDropArea">
                         <label for="pdfFile" class="d-block">
                             <input type="file" id="pdfFile" class="d-none" accept=".pdf">
-                            <img src="https://img.icons8.com/ios/50/000000/pdf.png" alt="PDF Icon">
+                            <img src="https://img.icons8.com/ios/50/000000/pdf.png" alt="PDF Icon" class="img-fluid">
                             <p class="mt-2">Drop your Document here, or <span class="text-success">browse</span></p>
                             <small class="text-muted">Only PDF files are allowed</small>
                         </label>
                     </div>
-
+            
                     <!-- File Preview -->
-                    <div id="filePreview" class="file-preview d-none">
-                        <span id="fileName" class="fw-bold"></span>
-                        <div>
-                            <button class="btn btn-sm btn-success" id="viewFile">View</button>
+                    <div id="filePreview" class="file-preview d-none mt-3">
+                        <span id="fileName" class="fw-bold d-block text-truncate"></span>
+                        <div class="mt-2 d-flex justify-content-center justify-content-md-start">
+                            <button class="btn btn-sm btn-success me-2" id="viewFile">View</button>
                             <button class="btn btn-sm btn-danger" id="removeFile">Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
 
 
