@@ -226,13 +226,22 @@
             <p class="mb-4 fs-3" style="text-transform: uppercase; font-family: 'Raleway', sans-serif;">
               <strong>All</strong> Articles
             </p>
-            <div class="row g-4" id="all-articles-container">
+            <div class="container py-5">
+              <div class="row g-4" id="allArticlesContainer">
+                <!-- Card 1 -->
+                
+                
+              </div>
+            </div>
+          
+            <!-- <div class="row" id="all-articles-container"> -->
               <!-- All article cards will be dynamically inserted here -->
             </div>
           </div>
         </div>
       </section>
     </div>
+    
 </section>
 
 <script>
@@ -286,22 +295,22 @@
           });
 
           // Populate All Articles Section
-          const allArticlesContainer = document.querySelector("#all-articles-container");
+          const allArticlesContainer = document.querySelector("#allArticlesContainer");
           sortedArticles.forEach((article) => {
             const articleCard = `
-              <div class="col-md-6 col-lg-4">
-                <a href="croporigindetails.html?id=${article.id}" class="text-decoration-none text-reset">
-                  <div class="card shadow-sm h-100 border-0 hover-card">
-                    <img src="${article.attributes.thumbnail}" class="card-img-top" alt="${article.attributes.title}" style="object-fit: cover; height: 150px" />
+              <div class="col-12 col-md-6 col-lg-3">
+                <a href="croporigindetails.html?id=${article.id}">
+                  <div class="card h-100 border-0 shadow-sm">
+                    <img src="${article.attributes.thumbnail}" class="card-img-top" alt="${article.attributes.title}">
                     <div class="card-body">
                       <h6 class="card-title fw-bold">${article.attributes.title}</h6>
-                      <p class="card-text text-muted">${article.attributes.content ? article.attributes.content.substring(0, 80) + "..." : "No content available"}</p>
                     </div>
                   </div>
                 </a>
-              </div>
+                  
+                </div>
             `;
-            allArticlesContainer.insertAdjacentHTML("beforeend", articleCard);
+            allArticlesContainer.innerHTML+=  articleCard;
           });
 
         } else {
