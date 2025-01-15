@@ -8857,6 +8857,21 @@ a:hover .hover-card {
       flex-direction: column;
       align-items: flex-start;
   }
+
+  .image-containerr {
+    margin-bottom: 50px; /* Adjust bottom margin for smaller screens */
+  }
+
+  .overlay-imagee {
+    top: 50%; /* Adjust vertical position to be centered */
+    left: 50%; /* Adjust horizontal position to be centered */
+    transform: translate(-50%, -50%); /* Center the overlay image */
+    width: 80%; /* Reduce width to fit smaller screens */
+    border: 1px solid white; /* Optional: reduce border size */
+    border-radius: 5px; /* Optional: adjust border radius */
+  }
+
+  
 }
 
 /* For Phones */
@@ -8888,12 +8903,24 @@ a:hover .hover-card {
   #textMessage {
       white-space: normal;
   }
+
+  .image-containerr {
+    width: 240px;
+    margin-bottom: 100px;
+    padding: 10px;
+  }
+  .real-time {
+    width: 400px;
+    margin-left: 40px;
+
+  }
 }
 
 
 .image-containerr {
   position: relative;
   display: inline-block;
+  margin-bottom: 100px;
 
 }
 .overlay-imagee {
@@ -8905,6 +8932,7 @@ a:hover .hover-card {
   border: 2px solid white; /* Optional: Add border for contrast */
   border-radius: 8px; /* Optional: Rounded corners */
 }
+
 
                 
 
@@ -8919,7 +8947,8 @@ a:hover .hover-card {
   border-radius: 10px;
   color: white;
   height: 300px;
-  width: 380px;
+  width: 350px;
+  
 }
 .box.black {
   background-color: #000;
@@ -8937,4 +8966,11 @@ a:hover .hover-card {
   line-height: 1.2;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+#downloadModal .modal-dialog {
+  margin-top: 180px; /* Adjust the value as needed */
+}
+#downloadModal1 .modal-dialog {
+  margin-top: 180px; /* Adjust the value as needed */
 }
