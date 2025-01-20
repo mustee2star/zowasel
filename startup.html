@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Min CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Animate Min CSS -->
@@ -198,66 +198,153 @@
                     data-bs-target="#downloadModal">Download Deck</a>
             </div>
 
-           <!-- First Modal -->
-    <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <div class="row g-0">
-                        <!-- Left Side: Image -->
-                        <div class="col-md-6">
-                            <img src="assets/img/modapix.png" alt="Landscape Image" class="img-fluid w-100 h-100">
-                        </div>
-                        <!-- Right Side: Form -->
-                        <div class="col-md-6 d-flex flex-column">
-                            <button type="button" class="btn-close align-self-end" data-bs-dismiss="modal" aria-label="Close" style="margin-bottom: 120px; background-color: #D70000; color: #D70000;"></button>
-                            <h4 class="modal-title" id="downloadModalLabel">Get This Deck Delivered to Your Inbox</h5>
-                            <p class="text-muted">Enter your details to receive a copy of this insightful document directly in your email.</p>
-                            <form id="firstForm" class="p-4">
-                                <div class="mb-2 text-start">
-                                    <label for="nameInput" class="form-label text-muted">Name</label>
-                                    <input type="text" class="form-control" id="nameInput" placeholder="Enter your name" required>
-                                </div>
-                                <div class="mb-3 text-start">
-                                    <label for="emailInput" class="form-label text-muted">Email</label>
-                                    <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" required>
-                                </div>
-                                
-                                <button type="submit" class="btn mb-5 btn-success w-100">Submit</button>
-                            </form>
-                        </div>
+<!-- First Modal -->
+<div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <!-- Left Side: Image -->
+                    <div class="col-md-6">
+                        <img src="assets/img/modapix.png" alt="Landscape Image" class="img-fluid w-100 h-100">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Second Modal -->
-    <div class="modal fade" id="downloadModal1" tabindex="-1" aria-labelledby="downloadModalLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <div class="row g-0">
-                        <!-- Left Side: Image -->
-                        <div class="col-md-6">
-                            <img src="assets/img/modapix.png" alt="Landscape Image" class="img-fluid w-100 h-100">
-                        </div>
-                        <!-- Right Side: Success Message -->
-                        <div class="col-md-6 d-flex flex-column mb-5 ">
-                            <button type="button" class="btn-close align-self-end" data-bs-dismiss="modal" aria-label="Close " style="margin-bottom: 200px !important; background-color: #D70000; color: #D70000;"></button>
-                            <div class="p-3">
-                                <h5 class="modal-title mb-3" id="downloadModalLabel1">You're All Set!</h5>
-                            <p class="text-muted">We've received your request. What would you like to do next?</p>
-                            <button class="btn btn-success w-100 mb-2">Send to Email</button>
-                            <button class="btn btn-outline-primary w-100 mb-2">View Document</button>
-                            <button class="btn btn-link w-100">Download Document</button>
+                    <!-- Right Side: Form -->
+                    <div class="col-md-6 d-flex flex-column">
+                        <button type="button" class="btn-close align-self-end" data-bs-dismiss="modal" aria-label="Close" style="margin-bottom: 120px; background-color: #D70000; color: #D70000;"></button>
+                        <h4 class="modal-title" id="downloadModalLabel">Get This Deck Delivered to Your Inbox</h4>
+                        <p class="text-muted">Enter your details to receive a copy of this insightful document directly in your email.</p>
+                        <form id="firstForm" class="p-4">
+                            <div class="mb-2 text-start">
+                                <label for="nameInput" class="form-label text-muted">Name</label>
+                                <input type="text" class="form-control" id="nameInput" placeholder="Enter your name" required>
                             </div>
-                        </div>
+                            <div class="mb-3 text-start">
+                                <label for="emailInput" class="form-label text-muted">Email</label>
+                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" required>
+                            </div>
+                            <button type="submit" class="btn mb-5 btn-success w-100">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Second Modal -->
+<!-- Second Modal (Download Options) -->
+<div class="modal fade" id="downloadModal1" tabindex="-1" aria-labelledby="downloadModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="row g-0">
+            <!-- Left Side: Image -->
+            <div class="col-md-6">
+              <img src="assets/img/modapix.png" alt="Landscape Image" class="img-fluid w-100 h-100">
+            </div>
+            <!-- Right Side: Success Message -->
+            <div class="col-md-6 d-flex flex-column mb-5">
+              <button type="button" class="btn-close align-self-end" data-bs-dismiss="modal" aria-label="Close" style="margin-bottom: 200px; background-color: #D70000; color: #D70000;"></button>
+              <div class="p-3">
+                <h5 class="modal-title mb-3" id="downloadModalLabel1">You're All Set!</h5>
+                <p class="text-muted">We've received your request. What would you like to do next?</p>
+                <button class="btn btn-success w-100 mb-2" id="sendToEmailBtn">Send to Email</button>
+                <button class="btn btn-outline-primary w-100 mb-2">View Document</button>
+                <button class="btn btn-link w-100">Download Document</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // First form submission
+    const apiUrl = "https://pwa.zowasel.com/api/agtechstartups";
+    const token = "1bbe00cb743d37a0448f5ade394ffeb303fbbb402c5518c8593960aa40cc87ae9a3c5b1a1b692eb3d7598acca09b321acb90c4417722de0a630517760dea73d8748b3c71c5f63e30ce8733234e3f389fb5f6a3d1409ba3fc70bbc0f6572fc618d7e48cb8876cf5113a96726cb6bcc323538dd6f3b888d55d8acbdc078696c6d0";
+
+    document.getElementById("firstForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("nameInput").value;
+        const email = document.getElementById("emailInput").value;
+
+        // Save data to localStorage
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+
+        fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ data: { email, fullname: name } }),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Success:", data);
+                const modal1 = new bootstrap.Modal(document.getElementById("downloadModal1"));
+                modal1.show();
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("Network error. Check API endpoint.");
+            });
+    });
+
+    // Email sending logic
+    document.getElementById("sendToEmailBtn").addEventListener("click", function () {
+    const email = localStorage.getItem("email") || "User"; // Fallback email
+    const name = localStorage.getItem("name") || "User";
+
+    const requestBody = {
+        to: email,
+        message: `Hello ${name}, Welcome to Zowasel Download Deck.`,
+        subject: "ZOWASEL",
+    };
+
+    fetch("https://pwa.zowasel.com/api/sendmail", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            to: email,
+            message: `Hello ${name}, Welcome to Zowasel Download Deck.`,
+            subject: "ZOWASEL"
+        }),
+    })
+    .then(async (response) => {
+        const data = await response.json();
+        console.log("Response Status:", response.status);
+        console.log("Response Data:", data);
+
+        if (response.status === 403) {
+            alert("Forbidden: Check your permissions or API configuration.");
+        } else if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${data.message || "Unknown error"}`);
+        } else {
+            alert("Email sent successfully!");
+        }
+    })
+    .catch((error) => {
+        console.error("Error Sending Email:", error);
+        alert("Failed to send email. Please try again.");
+    });
+});
+
+
+</script>
+
+
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -1207,6 +1294,7 @@
     </div>
     <!-- End Go Top Section -->
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- jQuery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
     <!-- Bootstrap Min JS -->
