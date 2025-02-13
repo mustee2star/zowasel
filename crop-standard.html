@@ -38,7 +38,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet" />
 
   <!--=== Title ===-->
-  <title>Crop Origin</title>
+  <title>Crop Standard Specification</title>
   <link rel="icon" type="image/png" href="assets/img/zowasel-icon.png" />
 </head>
 
@@ -174,10 +174,10 @@
       <div class="d-table-cell">
         <div class="container">
           <div class="page-title-content">
-            <h2>Crop Origin</h2>
+            <h2>Crop Standard Specification</h2>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li>Crop Origin</li>
+              <li>Crop Standard Specification</li>
             </ul>
           </div>
         </div>
@@ -186,140 +186,149 @@
   </div>
   <!-- End Page Title Area -->
 
-  <!-- Start Team Section -->
   <section class="team-section pb-70">
     <div class="container mt-5">
-      <section id="latest-articles">
-        <div class="container my-5">
-          <div class="row">
-            <p class="mb-4 fs-3" style="text-transform: uppercase; font-family: 'Raleway', sans-serif;">
-              <strong>Latest</strong> Articles
-            </p>
-            <!-- Featured Section (Left Column) -->
-            <div class="col-lg-6 mb-4">
-              <h5 class="fw-bold text-start text-uppercase text-success">Featured</h5>
-              <div class="card border-0 shadow-sm">
-                <img src="assets/img/blog-details/1.jpg" id="featured-image" class="card-img-top" alt="Featured Image" style="object-fit: cover; height: 350px" />
-                <div class="card-body p-2">
-                  <div class="d-flex justify-content-between">
-                    <small class="text-success fw-bold" id="featured-time">5 mins</small>
-                  </div>
+        <section id="latest-articles">
+            <div class="container my-5">
+                <div class="row">
+                    <p class="mb-4 fs-3">
+                        <strong>Latest</strong> Articles
+                    </p>
+
+                    <!-- Featured Article Section -->
+                    <div class="col-lg-6 mb-4">
+                        <h5 class="fw-bold text-success text-start">Featured</h5>
+                        <div class="card border-0 shadow-sm">
+                            <img id="featured-image" class="card-img-top" alt="Featured Image" style="object-fit: cover; height: 350px;">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-success fw-bold" id="featured-time">5 mins</small>
+                                </div>
+                                <h6 id="featured-title"></h6>
+                                <p id="featured-desc"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Articles Section -->
+                    <div class="col-lg-6">
+                        <h5 class="fw-bold text-success text-start">Recent</h5>
+                        <div class="row g-4" id="recent-articles"></div>
+                    </div>
                 </div>
-              </div>
             </div>
+        </section>
 
-            <!-- Recent Section (Right Column) -->
-            <div class="col-lg-6">
-              <h5 class="fw-bold text-start text-uppercase text-success">Recent</h5>
-              <div class="row g-4" id="recent-articles">
-                <!-- Recent articles will be dynamically inserted here -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- All Articles Section -->
-      <section id="all-articles" class="mt-5">
-        <div class="row">
-          <div class="container my-5">
-            <p class="mb-4 fs-3" style="text-transform: uppercase; font-family: 'Raleway', sans-serif;">
-              <strong>All</strong> Articles
+        <!-- All Articles Section -->
+        <div class="container my-5">
+            <p class="mb-4 fs-3">
+                <strong>All</strong> Articles
             </p>
             <div class="container py-5">
-              <div class="row g-4" id="allArticlesContainer">
-                <!-- Card 1 -->
-                
-                
-              </div>
+                <div class="row g-4" id="allArticlesContainer"></div>
             </div>
-          
-            <!-- <div class="row" id="all-articles-container"> -->
-              <!-- All article cards will be dynamically inserted here -->
-            </div>
-          </div>
         </div>
-      </section>
     </div>
-    
 </section>
 
 <script>
-    const options = {
-      method: "GET",
-      headers: {},
-    };
+  document.addEventListener("DOMContentLoaded", function () {
+      const apiUrl = "https://pwa.zowasel.com/api/cropstandardspecifications";
+      const apiToken = "64e4df64b42731fe15e6fe8ba1e100f2ec3f628bb9093ea4331387c364d353633b124822ca1dd78e73b249aa10d3b0f2a983e0285e1cf7fd3373a12f4469030faf8211a060351412f54d3ca9d83f6220e0a4e2874e89b0c02579ff6652a4b311cc20a35793251a5db18798b96aba9bab305be91d9709dc8de3d4a32b2894516f";
 
-    fetch("https://pwa.zowasel.com/api/blogs?pagination%5Bpage%5D=1&pagination%5BpageSize%5D=20", options)
-      .then((response) => response.json())
-      .then((data) => {
-        const articles = data.data;
+      async function fetchArticles() {
+          try {
+              const response = await fetch(apiUrl, {
+                  method: "GET",
+                  headers: {
+                      Authorization: `Bearer ${apiToken}`,
+                      "Content-Type": "application/json",
+                      "Accept": "application/json"
+                  }
+              });
 
-        if (Array.isArray(articles)) {
-          // Sort articles by creation date in descending order
-          const sortedArticles = articles.sort(
-            (a, b) => new Date(b.attributes.publishedAt) - new Date(a.attributes.publishedAt)
-          );
+              if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+              
+              const data = await response.json();
+              if (!data || !data.data || data.data.length === 0) {
+                  console.error("No articles found.");
+                  return;
+              }
 
-          // Get the latest 3 articles
-          const latestArticles = sortedArticles.slice(0, 3);
+              const articles = data.data;
+              console.log(articles)
+              
+              // ✅ Set Featured Article
+              if (articles.length > 0) {
+                  const featured = articles[0];
+                  document.getElementById("featured-image").src = featured.attributes.coverimage || "https://via.placeholder.com/350";
+                  document.getElementById("featured-title").innerText = featured.attributes.heading || "No Title Available";
+                  document.getElementById("featured-desc").innerText = featured.attributes.summary || "No Description Available";
+              }
 
-          // Populate Featured Article (Left Column)
-          const featuredArticle = latestArticles[0];
-          document.querySelector("#featured-image").src = featuredArticle.attributes.thumbnail;
-          document.querySelector("#featured-time").innerText = "5 mins"; // You can modify this with actual time logic if available
-
-          // Populate Recent Articles (Right Column)
-          const recentArticlesContainer = document.querySelector("#recent-articles");
-          latestArticles.slice(1).forEach((article) => {
-            const recentArticle = `
-              <div class="col-12">
-                <a href="croporigindetails.html?id=${article.id}" class="text-decoration-none text-reset">
-                  <div class="card border-0 shadow-sm hover-card">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="${article.attributes.thumbnail}" class="img-fluid rounded-start" alt="Recent Article" style="object-fit: cover; height: 150px; width: 100%" />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body p-2">
-                          <h6 class="card-title fw-bold mb-2">${article.attributes.title}</h6>
-                          <p class="card-text text-muted mb-0">${article.attributes.content ? article.attributes.content.substring(0, 80) + "..." : "No content available"}</p>
-                        </div>
-                      </div>
-                    </div>
+              // ✅ Populate Recent Articles
+              const recentArticlesContainer = document.getElementById("recent-articles");
+              recentArticlesContainer.innerHTML = articles.slice(1, 4).map(article => `
+                  <div class="col-12">
+                      <a href="#" class="text-decoration-none text-reset">
+                          <div class="card border-0 shadow-sm hover-card">
+                              <div class="row g-0">
+                                  <div class="col-md-4">
+                                      <img src="${article.attributes.coverimage || 'https://via.placeholder.com/150'}" class="img-fluid rounded-start" style="object-fit: cover; height: 150px; width: 100%;" />
+                                  </div>
+                                  <div class="col-md-8">
+                                      <div class="card-body p-2">
+                                          <h6 class="card-title fw-bold">${article.attributes.heading}</h6>
+                                          <p class="card-text text-muted mb-0">${article.attributes.summary}</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
                   </div>
-                </a>
-              </div>
-            `;
-            recentArticlesContainer.insertAdjacentHTML("beforeend", recentArticle);
-          });
+              `).join("");
 
-          // Populate All Articles Section
-          const allArticlesContainer = document.querySelector("#allArticlesContainer");
-          sortedArticles.forEach((article) => {
-            const articleCard = `
-              <div class="col-12 col-md-6 col-lg-3 hover-card">
-                <a href="croporigindetails.html?id=${article.id}">
-                  <div class="card h-100 border-0 shadow-sm">
-                    <img src="${article.attributes.thumbnail}" class="card-img-top" alt="${article.attributes.title}">
-                    <div class="card-body">
-                      <h6 class="card-title fw-bold">${article.attributes.title}</h6>
-                      
-                    </div>
+              // ✅ Populate All Articles
+              const allArticlesContainer = document.getElementById("allArticlesContainer");
+              allArticlesContainer.innerHTML = articles.map(article => `
+                  <div class="col-12 col-md-6 col-lg-3 hover-card">
+                      <a href="croporigindetails.html?id=${article.id}">
+                          <div class="card h-100 border-0 shadow-sm">
+                              <img src="${article.attributes.coverimage || 'https://via.placeholder.com/250'}" class="card-img-top" alt="${article.attributes.coverimage}">
+                              <div class="card-body">
+                                  <h6 class="card-title fw-bold">${article.attributes.heading}</h6>
+                                  <p class="card-text text-muted mb-0">${article.attributes.summary}</p>
+                              </div>
+                          </div>
+                      </a>
                   </div>
-                </a>
-                  
-                </div>
-            `;
-            allArticlesContainer.innerHTML+=  articleCard;
-          });
+              `).join("");
 
-        } else {
-          console.error("Articles data is not an array:", articles);
-        }
-      })
-      .catch((error) => console.error("Error:", error));
+          } catch (error) {
+              console.error("Error fetching articles:", error);
+          }
+      }
+
+      fetchArticles();
+  });
 </script>
+  <!-- End Team Section -->
+ 
+
+  <!--=== Start Video Section ===-->
+  <div class="d-none video-section mb-5">
+    <div class="container">
+      <div class="video-content">
+        <a href="https://www.youtube.com/watch?v=KQYWlKDcRvg&pp=ygUNem93YXNlbCB2aWRlbw%3D%3D"
+          class="video-btn popup-youtube">
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!--=== End Video Section ===-->
+
+  <!-- Start Footer Section -->
 
   <!-- End Team Section -->
  
@@ -612,6 +621,47 @@
         </div>
     </div>
 </section>
+  <!-- End Footer Section -->
+
+
+  <!-- Start Go Top Section -->
+  <div class="go-top">
+    <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
+  </div>
+  <!-- End Go Top Section -->
+
+  <!-- jQuery Min JS -->
+  <script src="assets/js/jquery.min.js"></script>
+  <!-- Bootstrap Min JS -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <!-- MeanMenu JS -->
+  <script src="assets/js/jquery.meanmenu.js"></script>
+  <!-- Appear JS -->
+  <script src="assets/js/jquery.appear.min.js"></script>
+  <!-- Odometer JS -->
+  <script src="assets/js/odometer.min.js"></script>
+  <!-- Owl Carousel Min JS -->
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <!-- Popup JS -->
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- Nice Selects Min JS -->
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <!-- Image LightBox Min JS -->
+  <script src="assets/js/imagelightbox.min.js"></script>
+  <!-- AjaxChimp Min JS -->
+  <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+  <!-- Form Validator Min JS -->
+  <script src="assets/js/form-validator.min.js"></script>
+  <!-- Contact Form Min JS -->
+  <script src="assets/js/contact-form-script.js"></script>
+  <!-- Wow Min JS -->
+  <script src="assets/js/wow.min.js"></script>
+  <!--=== Main JS ===-->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
   <!-- End Footer Section -->
 
 

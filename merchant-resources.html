@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -33,12 +33,13 @@
   <link rel="stylesheet" href="assets/css/dark.css" />
   <!-- Responsive CSS -->
   <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="styles.css" type="text/css">
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet" />
 
   <!--=== Title ===-->
-  <title>Crop Origin</title>
+  <title>Merchant Resources</title>
   <link rel="icon" type="image/png" href="assets/img/zowasel-icon.png" />
 </head>
 
@@ -174,10 +175,10 @@
       <div class="d-table-cell">
         <div class="container">
           <div class="page-title-content">
-            <h2>Crop Origin</h2>
+            <h2>Merchant Resources</h2>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li>Crop Origin</li>
+              <li>Merchant Resources</li>
             </ul>
           </div>
         </div>
@@ -187,84 +188,154 @@
   <!-- End Page Title Area -->
 
   <!-- Start Team Section -->
-        <section class="team-section pb-70">
+  <section class="team-section pb-70">
+    <div class="container mt-5">
+        <section id="latest-articles">
             <div class="container my-5">
-                <!-- Latest Articles Section -->
-                <div class="row mb-4">
-                  <div class="col-12">
-                    <h2 class="mb-4">Latest <span class="text-primary">Articles</span></h2>
-                  </div>
-                </div>
-            
-                <!-- Featured and Recent Section -->
-                <div class="row mb-5">
-                  <!-- Featured -->
-                  <div class="col-lg-6 mb-4">
-                    <h4 class="text-uppercase">Featured</h4>
-                    <div class="card">
-                      <img src="assets/img/cocoa.png" class="card-img-top" alt="Featured">
-                      <div class="card-body">
-                        <h5 class="card-title">Crop Origin: Kenyan Coffee</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur. Tempus iaculis euismod turpis facilisi tortor neque.</p>
-                        <p><small class="text-muted">5 mins</small></p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-            
-                  <!-- Recent -->
-                  <div class="col-lg-6">
-                    <h4 class="text-uppercase">Recent</h4>
-                    <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action d-flex align-items-start">
-                        <img src="assets/img/coco1.png" class="img-thumbnail me-3" alt="Recent 1" style="width: 70px; height: 70px;">
-                        <div>
-                          <h6 class="mb-1">Crop Origin: Kenyan Coffee</h6>
-                          <p class="mb-1">Lorem ipsum dolor sit amet consectetur. Tempus iaculis euismod turpis facilisi.</p>
-                          <small class="text-muted">5 mins</small>
-                        </div>
-                      </a>
-                      <a href="#" class="list-group-item list-group-item-action d-flex align-items-start">
-                        <img src="assets/img/coco1.png" class="img-thumbnail me-3" alt="Recent 2" style="width: 70px; height: 70px;">
-                        <div>
-                          <h6 class="mb-1">Crop Origin: Kenyan Coffee</h6>
-                          <p class="mb-1">Lorem ipsum dolor sit amet consectetur. Tempus iaculis euismod turpis facilisi.</p>
-                          <small class="text-muted">5 mins</small>
-                        </div>
-                      </a>
-                      <a href="#" class="list-group-item list-group-item-action d-flex align-items-start">
-                        <img src="assets/img/coco1.png" class="img-thumbnail me-3" alt="Recent 3" style="width: 70px; height: 70px;">
-                        <div>
-                          <h6 class="mb-1">Crop Origin: Kenyan Coffee</h6>
-                          <p class="mb-1">Lorem ipsum dolor sit amet consectetur. Tempus iaculis euismod turpis facilisi.</p>
-                          <small class="text-muted">5 mins</small>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-            
-                <!-- All Articles Section -->
                 <div class="row">
-                  <div class="col-12">
-                    <h3 class="mb-4">All <span class="text-primary">Articles</span></h3>
-                  </div>
-                  <!-- Article Cards -->
-                  <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let article of allArticles">
-                    <div class="card">
-                      <img src="article-image.jpg" class="card-img-top" alt="Article Image">
-                      <div class="card-body">
-                        <h6 class="card-title">Crop Origin: Kenyan Coffee</h6>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur. Tempus iaculis euismod turpis facilisi tortor.</p>
-                        <p><small class="text-muted">5 mins</small></p>
-                        <a href="#" class="btn btn-sm btn-primary">Read More</a>
-                      </div>
+                    <p class="mb-4 fs-3">
+                        <strong>Latest</strong> Articles
+                    </p>
+
+                    <!-- Featured Article Section -->
+                    <div class="col-lg-6 mb-4">
+                        <h5 class="fw-bold text-success text-start">Featured</h5>
+                        <div class="card border-0 shadow-sm">
+                            <img id="featured-image" class="card-img-top" alt="Featured Image" style="object-fit: cover; height: 350px;">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-success fw-bold" id="featured-time">5 mins</small>
+                                </div>
+                                <h6 id="featured-title"></h6>
+                                <p id="featured-desc"></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+
+                    <!-- Recent Articles Section -->
+                    <div class="col-lg-6">
+                        <h5 class="fw-bold text-success text-start">Recent</h5>
+                        <div class="row g-4" id="recent-articles"></div>
+                    </div>
                 </div>
-              </div>  
+            </div>
         </section>
-   
+
+        <!-- All Articles Section -->
+        <div class="container my-5">
+            <p class="mb-4 fs-3">
+                <strong>All</strong> Articles
+            </p>
+            <div class="container py-5">
+                <div class="row g-4" id="allArticlesContainer"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const apiUrl = "https://pwa.zowasel.com/api/merchantresources";
+        const apiToken = "64e4df64b42731fe15e6fe8ba1e100f2ec3f628bb9093ea4331387c364d353633b124822ca1dd78e73b249aa10d3b0f2a983e0285e1cf7fd3373a12f4469030faf8211a060351412f54d3ca9d83f6220e0a4e2874e89b0c02579ff6652a4b311cc20a35793251a5db18798b96aba9bab305be91d9709dc8de3d4a32b2894516f";
+
+        async function fetchArticles() {
+            try {
+                const response = await fetch(apiUrl, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${apiToken}`,
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                });
+
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+                const data = await response.json();
+                if (!data || !data.data || data.data.length === 0) {
+                    console.error("No articles found.");
+                    return;
+                }
+
+                const articles = data.data;
+                console.log(articles);
+
+                // ✅ Set Featured Article
+                if (articles.length > 0) {
+                    const featured = articles[0];
+
+                    const featuredImage = document.getElementById("featured-image");
+                    if (featuredImage) {
+                        featuredImage.src = featured.attributes.coverimage || "https://via.placeholder.com/350x150";
+                        featuredImage.onerror = function () {
+                            this.src = "https://via.placeholder.com/350x150";
+                        };
+                    }
+
+                    const featuredTitle = document.getElementById("featured-title");
+                    if (featuredTitle) featuredTitle.innerText = featured.attributes.resourceheading || "No Title Available";
+
+                    const featuredDesc = document.getElementById("featured-desc");
+                    if (featuredDesc) featuredDesc.innerText = featured.attributes.resourcesummary || "No Description Available";
+                }
+
+                // ✅ Populate Recent Articles
+                const recentArticlesContainer = document.getElementById("recent-articles");
+                if (recentArticlesContainer) {
+                    recentArticlesContainer.innerHTML = articles.slice(1, 4).map(article => `
+                        <div class="col-12 mb-3">
+                            <a href="croporigindetails.html?id=${article.id}" class="text-decoration-none text-reset">
+                                <div class="card border-0 shadow-sm hover-card">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="${article.attributes.coverimage || 'https://via.placeholder.com/150'}" class="img-fluid rounded-start" style="object-fit: cover; height: 150px; width: 100%;" alt="Article Image">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body p-2">
+                                                <h6 class="card-title fw-bold">${article.attributes.resourceheading}</h6>
+                                                <p class="card-text text-muted mb-0">${article.attributes.resourcesummary}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    `).join("");
+                }
+
+                // ✅ Populate All Articles
+                const allArticlesContainer = document.getElementById("allArticlesContainer");
+                if (allArticlesContainer) {
+                    allArticlesContainer.innerHTML = articles.map(article => `
+                        <div class="col-12 col-md-6 col-lg-3 mb-4 hover-card">
+                            <a href="croporigindetails.html?id=${article.id}" class="text-decoration-none text-reset">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="${article.attributes.coverimage || 'https://via.placeholder.com/250'}" class="card-img-top" alt="Article Image">
+                                    <div class="card-body">
+                                        <h6 class="card-title fw-bold">${article.attributes.resourceheading}</h6>
+                                        <p class="card-text text-muted mb-0">${article.attributes.resourcesummary}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    `).join("");
+                }
+
+            } catch (error) {
+                console.error("Error fetching articles:", error);
+            }
+        }
+
+        fetchArticles();
+    });
+</script>
+
+
+
+
+  
+    
+
 
 
 
@@ -389,11 +460,11 @@
                                 AML/CFT Policy
                             </a>
                         </li>
-                        <li>
-                            <a href="index.html#researchprogram">
+                         <li>
+                            <a href="research-program.html">
                                 Research Programs
                             </a>
-                        </li>
+                        </li> 
                         <li>
                             <a href="conflict.html">
                                 Conflict of Interest
@@ -424,7 +495,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="faq.html">
                                 FAQs
                             </a>
                         </li>
@@ -439,13 +510,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="merchant-resources.html">
                                 Merchant Resources
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Knowledge Base
                             </a>
                         </li>
 
@@ -461,8 +527,13 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="crop-standard.html">
                                 Crop Standard Specification
+                            </a>
+                        </li>
+                        <li>
+                            <a href="startup.html">
+                                Startup Program
                             </a>
                         </li>
                         <li>
