@@ -270,7 +270,7 @@
               const recentArticlesContainer = document.getElementById("recent-articles");
               recentArticlesContainer.innerHTML = articles.slice(1, 4).map(article => `
                   <div class="col-12">
-                      <a href="#" class="text-decoration-none text-reset">
+                      <a href="crop-standard-details.html?id=${article.id}" class="text-decoration-none text-reset">
                           <div class="card border-0 shadow-sm hover-card">
                               <div class="row g-0">
                                   <div class="col-md-4">
@@ -292,7 +292,7 @@
               const allArticlesContainer = document.getElementById("allArticlesContainer");
               allArticlesContainer.innerHTML = articles.map(article => `
                   <div class="col-12 col-md-6 col-lg-3 hover-card">
-                      <a href="croporigindetails.html?id=${article.id}">
+                      <a href="crop-standard-details.html?id=${article.id}">
                           <div class="card h-100 border-0 shadow-sm">
                               <img src="${article.attributes.coverimage || 'https://via.placeholder.com/250'}" class="card-img-top" alt="${article.attributes.coverimage}">
                               <div class="card-body">
