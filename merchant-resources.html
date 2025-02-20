@@ -198,19 +198,23 @@
                     </p>
 
                     <!-- Featured Article Section -->
+                    <!-- Featured Article Section -->
                     <div class="col-lg-6 mb-4">
                         <h5 class="fw-bold text-success text-start">Featured</h5>
-                        <div class="card border-0 shadow-sm">
-                            <img id="featured-image" class="card-img-top" alt="Featured Image" style="object-fit: cover; height: 350px;">
-                            <div class="card-body p-2">
-                                <div class="d-flex justify-content-between">
-                                    <small class="text-success fw-bold" id="featured-time">5 mins</small>
+                        <a id="featured-link" href="#" class="text-decoration-none text-reset">
+                            <div class="card border-0 shadow-sm">
+                                <img id="featured-image" class="card-img-top" alt="Featured Image" style="object-fit: cover; height: 350px;">
+                                <div class="card-body p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <small class="text-success fw-bold" id="featured-time">5 mins</small>
+                                    </div>
+                                    <h6 id="featured-title"></h6>
+                                    <p id="featured-desc"></p>
                                 </div>
-                                <h6 id="featured-title"></h6>
-                                <p id="featured-desc"></p>
                             </div>
-                        </div>
+                        </a>
                     </div>
+
 
                     <!-- Recent Articles Section -->
                     <div class="col-lg-6">
@@ -261,23 +265,33 @@
                 console.log(articles);
 
                 // ✅ Set Featured Article
-                if (articles.length > 0) {
-                    const featured = articles[0];
+if (articles.length > 0) {
+    const featured = articles[0];
 
-                    const featuredImage = document.getElementById("featured-image");
-                    if (featuredImage) {
-                        featuredImage.src = featured.attributes.coverimage || "https://via.placeholder.com/350x150";
-                        featuredImage.onerror = function () {
-                            this.src = "https://via.placeholder.com/350x150";
-                        };
-                    }
+    // Set featured article image
+    const featuredImage = document.getElementById("featured-image");
+    if (featuredImage) {
+        featuredImage.src = featured.attributes.coverimage || "https://via.placeholder.com/350x150";
+        featuredImage.onerror = function () {
+            this.src = "https://via.placeholder.com/350x150";
+        };
+    }
 
-                    const featuredTitle = document.getElementById("featured-title");
-                    if (featuredTitle) featuredTitle.innerText = featured.attributes.resourceheading || "No Title Available";
+    // Set featured article title
+    const featuredTitle = document.getElementById("featured-title");
+    if (featuredTitle) featuredTitle.innerText = featured.attributes.resourceheading || "No Title Available";
 
-                    const featuredDesc = document.getElementById("featured-desc");
-                    if (featuredDesc) featuredDesc.innerText = featured.attributes.resourcesummary || "No Description Available";
-                }
+    // Set featured article description
+    const featuredDesc = document.getElementById("featured-desc");
+    if (featuredDesc) featuredDesc.innerText = featured.attributes.resourcesummary || "No Description Available";
+
+    // ✅ Make featured article clickable
+    const featuredLink = document.getElementById("featured-link");
+    if (featuredLink) {
+        featuredLink.href = `merchant-resources-details.html?id=${featured.id}`;
+    }
+}
+
 
                 // ✅ Populate Recent Articles
                 const recentArticlesContainer = document.getElementById("recent-articles");
