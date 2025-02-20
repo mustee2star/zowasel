@@ -246,13 +246,16 @@
             const container = document.getElementById("research-programs-container");
             container.innerHTML = programs.map(program => `
                 <div class="col-md-6 col-lg-3">
-                    <div class="card shadow-sm h-100 border-0">
-                        <img src="${program.attributes.coverimage || 'https://via.placeholder.com/150'}" class="card-img-top" alt="Research Program" style="object-fit: cover; height: 150px;">
+                    <a href="#" target="_blank">
+                      <div class="card shadow-sm h-100 border-0">
+                        <img src="" class="card-img-top" alt="Research Program" style="object-fit: cover; height: 150px;">
                         <div class="card-body">
-                            <h6 class="fw-bold">${program.attributes.heading || 'No Title Available'}</h6>
-                            <p class="card-text text-muted">${program.attributes.summary || 'No Description Available'}</p>
+                            <h6 class="fw-bold">${program.attributes.pdfheading || 'No Title Available'}</h6>
+                            <p class="card-text text-muted">${program.attributes.pdfsummary || 'No Description Available'}</p>
                         </div>
                     </div>
+                    </a>
+
                 </div>
             `).join("");
 

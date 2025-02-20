@@ -306,7 +306,8 @@
 
     const requestBody = {
         to: email,
-        message: `Hello ${name}, Welcome to Zowasel Download Deck.`,
+        message: `Hello ${name}, Welcome to Zowasel Download Deck.  Here is Document <a href="https://zowasel.com/zowaselprogram.pptx.pdf" target="_blank">Download Zowasel Program PDF</a>
+`,
         subject: "ZOWASEL",
     };
 
@@ -315,11 +316,7 @@
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            to: email,
-            message: `Hello ${name}, Welcome to Zowasel Download Deck.`,
-            subject: "ZOWASEL"
-        }),
+        body: JSON.stringify(requestBody),
     })
     .then(async (response) => {
         const data = await response.json();
