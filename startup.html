@@ -249,8 +249,8 @@
                 <h5 class="modal-title mb-3" id="downloadModalLabel1">You're All Set!</h5>
                 <p class="text-muted">We've received your request. What would you like to do next?</p>
                 <button class="btn btn-success w-100 mb-2" id="sendToEmailBtn">Send to Email</button>
-                <button class="btn btn-outline-primary w-100 mb-2">View Document</button>
-                <button class="btn btn-link w-100">Download Document</button>
+                <button class="btn btn-outline-primary w-100 mb-2"><a href="https://zowasel.com/zowaselprogram.pptx.pdf" target="_blank">View Document</a></p></button>
+                <button class="btn btn-link w-100"><a href="https://zowasel.com/zowaselprogram.pptx.pdf" target="_blank">Download Document</a></p></button>
               </div>
             </div>
           </div>
@@ -305,11 +305,19 @@
     const name = localStorage.getItem("name") || "User";
 
     const requestBody = {
-        to: email,
-        message: `Hello ${name}, Welcome to Zowasel Download Deck.  Here is Document <a href="https://zowasel.com/zowaselprogram.pptx.pdf" target="_blank">Download Zowasel Program PDF</a>
-`,
-        subject: "ZOWASEL",
-    };
+    to: email,
+    message: `
+        <p>Hello ${name},</p>
+        <p>Thank you for your interest in the Zowasel Startup Program Deck.</p>
+        <p>Our Startup Program is designed to empower startups by enabling them to maximize profitability while reducing operational costs through seamless access to our technology, alternative finance solutions, and guaranteed markets.</p>
+        <p>We offer a comprehensive suite of tools and resources to help you meet regulatory and voluntary compliance standards and quality protocols for national and international markets.</p>
+        <p>To view the program deck, please click on the link below:</p>
+        <p><a href="https://zowasel.com/zowaselprogram.pptx.pdf" target="_blank">Download Zowasel Program PDF</a></p>
+        <p>We appreciate your trust in Zowasel and look forward to supporting your journey.</p>
+    `,
+    subject: "Zowasel Startup Program Deck Request",
+};
+
 
     fetch("https://pwa.zowasel.com/api/sendmail", {
         method: "POST",
